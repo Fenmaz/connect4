@@ -16,7 +16,11 @@ def winning_sequences(n, k):
 
 class Connect4Board:
     """
-    Represents a board of the Connect Four game.
+    A board of the Connect Four game for two players.
+    The game is configurable by number of rows, columns and winning conditions.
+
+    Note that it is more efficient to reset the current board than to create
+    a new one due to a precomputation step.
     """
     def __init__(self, n_rows=6, n_columns=7, n_connect=4):
         self.shape = (n_rows, n_columns)
