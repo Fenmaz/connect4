@@ -18,34 +18,39 @@ class Connect4Board:
     """
     Represents a board of the Connect Four game.
     """
-    def __init__(self):
+    def __init__(self, n_rows=6, n_columns=7, n_connect=4):
+        self.shape = (n_rows, n_columns)
         # Player turn: True - first, False - second
         self.turn = True
 
         # Keep track of where the next disc should fall to
-        self.columns_total = [0] * 6
+        self.columns_total = [0] * self.shape[0]
 
         # Encode all played discs with integers for checking win conditions
-        self.columns = [[0] * 6, [0] * 6]
-        self.rows = [[0] * 7, [0] * 7]
-        # North-West diagonals, indexed by i+j
-        self.nw_diag = [[0] * 12, [0] * 12]
-        # North-East diagonals, indexed by i-j+6
-        self.ne_diag = [[0] * 12, [0] * 12]
+        self.columns = [[0] * self.shape[0], [0] * self.shape[0]]
+        self.rows = [[0] * self.shape[1], [0] * self.shape[1]]
+        # North-West diagonals, indexed by i + j
+        self.nw_diag = [[0] * (sum(self.shape) - 1),
+                        [0] * (sum(self.shape) - 1)]
+        # North-East diagonals, indexed by i - j + n_rows
+        self.ne_diag = [[0] * (sum(self.shape) - 1),
+                        [0] * (sum(self.shape) - 1)]
 
         # Generate all winning sequences for checking win conditions
-        self.winning_sequences = winning_sequences(7, 4)
+        self.winning_sequences = winning_sequences(max(self.shape), n_connect)
 
     def reset(self):
         """
         Reset the board to an empty board and start a new game.
         """
         self.turn = True
-        self.columns_total = [0] * 6
-        self.columns = [[0] * 6, [0] * 6]
-        self.rows = [[0] * 7, [0] * 7]
-        self.nw_diag = [[0] * 12, [0] * 12]
-        self.ne_diag = [[0] * 12, [0] * 12]
+        self.columns_total = [0] * self.shape[0]
+        self.columns = [[0] * self.shape[0], [0] * self.shape[0]]
+        self.rows = [[0] * self.shape[1], [0] * self.shape[1]]
+        self.nw_diag = [[0] * (sum(self.shape) - 1),
+                        [0] * (sum(self.shape) - 1)]
+        self.ne_diag = [[0] * (sum(self.shape) - 1),
+                        [0] * (sum(self.shape) - 1)]
 
     def play(self, column):
         """
