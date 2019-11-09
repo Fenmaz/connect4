@@ -1,5 +1,5 @@
 # Connect 4
-> Team members: Trung Nguyen, Hormazd Nadir Godrej and Luke Kim
+> Trung Nguyen, Hormazd Nadir Godrej and Luke Kim
 
 Class project for CS 229: Machine Learning at Stanford University.
 
@@ -9,16 +9,22 @@ Class project for CS 229: Machine Learning at Stanford University.
 
 - python3
 
-## Usuage
+## Usage
 
-To run the game in command line:
+To play the game in command line:
 
-> run connect4.py
-```shell
+```shell script
 $ python3 connect4.py
 ```
 
---- 
+To download the UCI Machine Learning Repository:
+
+```shell script
+$ python3 data_util.py
+``` 
+
+## References:
+Dua, D. and Graff, C. (2019). UCI Machine Learning Repository [http://archive.ics.uci.edu/ml]. Irvine, CA: University of California, School of Information and Computer Science.
 
 ## Contact
 
