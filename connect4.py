@@ -84,7 +84,7 @@ class Connect4Board:
 
 def ask_move(player, board_):
     move = int(input("Player {}'s turn.\n"
-                     "Select a column to place a disc [1-7]: "
+                     "Select a column to place a disc [0-6]: "
                      .format(player))) - 1
     win_ = board_.play(move)
 
