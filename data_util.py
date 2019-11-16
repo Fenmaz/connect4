@@ -10,7 +10,7 @@ D = 42
 
 
 def fetch_train_val(x_converter_func=None, y_converter_func=None):
-    main()
+    download()
     split(SEED)
     x_converter = {i: x_converter_func for i in range(D)}
     y_converter = {0: lambda s: y_converter_func(s.strip())}
@@ -43,7 +43,7 @@ def split(seed=None):
             np.savetxt("data/{}".format(filename), data, delimiter=",", fmt="%s")
 
 
-def main():
+def download():
     if os.path.isfile("data/connect-4.data"):
         print("Data has already been downloaded.")
     else:
@@ -59,5 +59,5 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    download()
     split(SEED)
