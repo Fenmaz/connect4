@@ -14,8 +14,8 @@ Similar to what the author in the above link did, I place 1 for player 1, 2 for 
 Then using the scoring method described in the above link, I try to run the negamax algorithm.
 
 '''
-import numpy as np
-import sys
+import data_util
+
 '''================== I/O Methods ====================='''
 '''
 If the cell in the board is blank, assign 0
@@ -200,7 +200,8 @@ def printGrid(a):
 
 '''================== Main Function ====================='''
 if __name__ == "__main__":
-    filepath = 'connect-4.data' # assuming this file is in the same directory
+    data_util.download()  # download data if it is not already available
+    filepath = 'data/connect-4.data'
     ret = Positions(filepath)
     test = ret[0]
     b = Board(test[0],test[1])
