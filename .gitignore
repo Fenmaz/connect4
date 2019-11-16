@@ -1,2 +1,5 @@
 # Data files
 data/
+
+# Python cache files
+__pycache__/
