@@ -13,6 +13,7 @@ def main():
     clf = LogisticRegression(random_state=0, solver='lbfgs', multi_class="multinomial",
                              max_iter=1000, verbose=False)
     clf.fit(x_train, y_train)
+    train_accuracy = clf.score(x_train, y_train)
     accuracy = clf.score(x_dev, y_dev)
     y_pred = clf.predict(x_dev)
 
@@ -24,6 +25,7 @@ def main():
     print("Train set classes counts: {}".format(np.unique(y_train, return_counts=True)[1]))
     print("Dev set classes counts: {}".format(np.unique(y_dev, return_counts=True)[1]))
 
+    print("Accuracy on train set is {}".format(train_accuracy))
     print("Accuracy on dev set is {}".format(accuracy))
     print("Confusion matrix is (in sorted order) \n{}".format(confusion_mat))
 
