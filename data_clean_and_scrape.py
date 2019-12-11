@@ -74,9 +74,39 @@ def deduceMoves(grid):
 
 # setup driver
 driver = webdriver.Chrome("/usr/local/bin/chromedriver")
-test = refined[1:5001]
+test = refined[1:15]
 toExcel = []
+#boardValue = [] # win/loss/draw status of the board (assuming perfect play)
+#movesLeft = [] # number of moves left for the game to finish (assuming perfect play)
 cnt = 1
+
+'''
+Red = player 1
+Yellow = player 2
+returns [boardValue,movesLeft]
+'''
+def gameStatus(s,query):
+    if s == "Yellow won":
+        return [2,0]
+    elif s == "Red won":
+        return [1,0]
+    elif s == "Draw game":
+        return [0,0]
+    elif s == "Red can draw":
+        return [0,42-len(query)]
+    elif s == "Yellow can draw":
+        return [0,42-len(query)]
+    else: # either Red or Yellow wins with x number of moves left
+        moves = [int(i) for i in s.split() if i.isdigit()]
+        if s.find("Red") != -1 and s.find("win") != -1: # red found and wins
+            return [1,moves[0]]
+        elif s.find("Yellow") != -1 and s.find("win") != -1: # yellow found and wins
+            return [2,moves[0]]
+        elif s.find("Red") != -1 and s.find("loses") != -1: # red found and loses
+            return [2,moves[0]]
+        elif s.find("Yellow") != -1 and s.find("loses") != -1: # yellow found and loses
+            return [1,moves[0]]
+
 for configs in test:
     temp = copy.deepcopy(configs)
     output = deduceMoves(temp)
@@ -87,11 +117,18 @@ for configs in test:
     content = driver.page_source
     soup = BeautifulSoup(content,features="html.parser")
     c = soup.getText()
-    #print(c)
     idx = c.find(":[")
     result = c[idx+2:-2]
     policy = result.split(',')
-    toExcel.append(configs+policy)
+    # we now look up the board status and the number of moves to win
+    url = "https://connect4.gamesolver.org/?pos="+query
+    driver.get(url)
+    time.sleep(2.5) # wait for a while after the website loads
+    content = driver.page_source
+    soup = BeautifulSoup(content,features="html.parser")
+    c = soup.find("div",{"id":"solution_header"})
+    ret = gameStatus(c.text,query)
+    toExcel.append(configs+policy+ret)
     print("iteration %d" % cnt)
     cnt += 1
 
@@ -100,5 +137,7 @@ for i in range(1,43):
     features.append("pos_"+str(i))
 for i in range(1,8):
     features.append("score_"+str(i))
+features.append("boardValue")
+features.append("movesLeft")
 df = pd.DataFrame(np.array(toExcel),columns=features)
 df.to_csv('c4_generated.csv', index=False, encoding='utf-8')
