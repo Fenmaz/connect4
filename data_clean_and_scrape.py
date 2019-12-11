@@ -74,12 +74,11 @@ def deduceMoves(grid):
 
 # setup driver
 driver = webdriver.Chrome("/usr/local/bin/chromedriver")
-test = refined[1:15]
+test = refined[0:6000]
 toExcel = []
 #boardValue = [] # win/loss/draw status of the board (assuming perfect play)
 #movesLeft = [] # number of moves left for the game to finish (assuming perfect play)
 cnt = 1
-
 '''
 Red = player 1
 Yellow = player 2
@@ -123,13 +122,17 @@ for configs in test:
     # we now look up the board status and the number of moves to win
     url = "https://connect4.gamesolver.org/?pos="+query
     driver.get(url)
-    time.sleep(2.5) # wait for a while after the website loads
+    time.sleep(2) # wait for a while after the website loads
     content = driver.page_source
     soup = BeautifulSoup(content,features="html.parser")
     c = soup.find("div",{"id":"solution_header"})
     ret = gameStatus(c.text,query)
-    toExcel.append(configs+policy+ret)
     print("iteration %d" % cnt)
+    print(configs)
+    print(policy)
+    print(ret)
+    if type(configs) == type(policy) and type(configs) == type(ret) and type(policy) == type(ret):
+        toExcel.append(configs+policy+ret)
     cnt += 1
 
 features = []
