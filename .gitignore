@@ -1,7 +1,7 @@
 # Data files
 classification/data/
 alpha_zero/data/play_data/
-alpha_zero/data/next_generation/
+alpha_zero/data/model/next_generation/
 alpha_zero/data/generated/
 *.csv
 
