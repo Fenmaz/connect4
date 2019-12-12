@@ -72,7 +72,7 @@ Basic Usages
 For training model, execute `Self-Play`, `Trainer` and `Evaluator`. 
 
 
-Self-Play
+````Self-Play
 --------
 
 ```bash
@@ -114,7 +114,7 @@ If next-generation model wins, it becomes BestModel.
 
 ### options
 * `--type mini`: use mini config for testing, (see `src/connect4_zero/configs/mini.py`)
-
+````
 Play Game
 ---------
 
