@@ -2,6 +2,7 @@
 classification/data/
 alpha_zero/data/play_data/
 alpha_zero/data/next_generation/
+alpha_zero/data/generated/
 *.csv
 
 # Python cache files
