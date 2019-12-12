@@ -1,0 +1,1 @@
+Attempted fitting a Linear Regression on the board to predict the number of moves left for the game to finish. 
