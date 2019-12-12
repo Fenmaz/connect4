@@ -9,7 +9,7 @@ against yourself (or your friend). It serves as a good starting
 point for familiarizing oneself with the game.
 * ```classification```: given a board position, predict who will be the winner.
 The dataset in use is the UIC and the Kaggle dataset. 
-** TODO: add hyperlinks to the datasets **
+__TODO: add hyperlinks to the datasets__
 * ```minimax```: solve the game using the Minimax algorithm.
 * ```alpha_zero```: solve the game using the AlphaZero algorithms. 
 More details below.
