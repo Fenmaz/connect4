@@ -10,7 +10,7 @@ point for familiarizing oneself with the game.
 * ```classification```: given a board position, predict who will be the winner.
 The dataset in use is the UIC and the Kaggle dataset. 
 ** TODO: add hyperlinks to the datasets **
-* ```solver```: solve the game using the Minimax algorithm.
+* ```minimax```: solve the game using the Minimax algorithm.
 * ```alpha_zero```: solve the game using the AlphaZero algorithms. 
 More details below.
 
@@ -27,7 +27,7 @@ Python 3.
 pip install scikit pygame
 ```
 
-3. ```solver```: Requires ```pygame```
+3. ```minimax```: Requires ```pygame```
 ```shell script
 pip install pygame
 ```
@@ -61,6 +61,19 @@ $ python classification/src/data_util.py
 
 The script will download data from the UIC database and run
 logistic regression on it.
+
+3. ```minimax```
+
+To play against the Minimax solver:
+
+```shell script
+$ python solver/src/minimax_playable.py
+```
+
+4. ```alpha_zero```
+
+TODO: add details about running the AlphaZero code
+
 
 ## References:
 Dua, D. and Graff, C. (2019). UCI Machine Learning Repository [http://archive.ics.uci.edu/ml]. Irvine, CA: University of California, School of Information and Computer Science.
