@@ -7,7 +7,7 @@ class EvaluateConfig:
         self.play_config.change_tau_turn = 0
         self.play_config.noise_eps = 0
         self.evaluate_latest_first = True
-        self.single_eval_game_num = 3
+        self.single_eval_game_num = 200
 
 
 class PlayDataConfig:
