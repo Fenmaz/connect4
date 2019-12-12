@@ -3,7 +3,7 @@ import os
 from glob import glob
 from logging import getLogger
 
-from alpha_zero.src.connect4_zero.config import ResourceConfig
+from connect4_zero.config import ResourceConfig
 
 logger = getLogger(__name__)
 

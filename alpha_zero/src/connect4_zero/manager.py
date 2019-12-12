@@ -7,7 +7,7 @@ from .config import Config
 
 logger = getLogger(__name__)
 
-CMD_LIST = ['self', 'opt', 'eval', 'play_gui']
+CMD_LIST = ['self', 'opt', 'eval']
 
 
 def create_parser():
@@ -16,6 +16,7 @@ def create_parser():
     parser.add_argument("--new", help="run from new best model", action="store_true")
     parser.add_argument("--type", help="use normal setting", default="normal")
     parser.add_argument("--total-step", help="set TrainerConfig.start_total_steps", type=int)
+    parser.add_argument("--single", help="run a single evaluation iteration", action="store_true")
     return parser
 
 
@@ -23,6 +24,7 @@ def setup(config: Config, args):
     config.opts.new = args.new
     if args.total_step is not None:
         config.trainer.start_total_steps = args.total_step
+    config.single_eval = args.single
     config.resource.create_directories()
     setup_logger(config.resource.main_log_path)
 
@@ -46,6 +48,3 @@ def start():
     elif args.cmd == 'eval':
         from .worker import evaluate
         return evaluate.start(config)
-    elif args.cmd == 'play_gui':
-        from .play_game import gui
-        return gui.start(config)

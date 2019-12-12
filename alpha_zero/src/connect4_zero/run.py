@@ -13,5 +13,5 @@ if _PATH_ not in sys.path:
 
 
 if __name__ == "__main__":
-    from alpha_zero.src.connect4_zero import manager
+    from connect4_zero import manager
     manager.start()

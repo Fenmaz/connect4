@@ -7,15 +7,15 @@ import keras.backend as K
 import numpy as np
 from keras.optimizers import SGD
 
-from alpha_zero.src.connect4_zero.agent.model_connect4 import Connect4Model, objective_function_for_policy, \
+from connect4_zero.agent.model_connect4 import Connect4Model, objective_function_for_policy, \
     objective_function_for_value
-from alpha_zero.src.connect4_zero.config import Config
-from alpha_zero.src.connect4_zero.lib import tf_util
-from alpha_zero.src.connect4_zero.lib.data_helper import get_game_data_filenames, read_game_data_from_file, \
+from connect4_zero.config import Config
+from connect4_zero.lib import tf_util
+from connect4_zero.lib.data_helper import get_game_data_filenames, read_game_data_from_file, \
     get_next_generation_model_dirs
-from alpha_zero.src.connect4_zero.lib.model_helpler import load_best_model_weight
-from alpha_zero.src.connect4_zero.env.connect4_env import Connect4Env, Player
-from alpha_zero.src.connect4_zero.lib.tensorboard_step_callback import TensorBoardStepCallback
+from connect4_zero.lib.model_helpler import load_best_model_weight
+from connect4_zero.env.connect4_env import Connect4Env, Player
+from connect4_zero.lib.tensorboard_step_callback import TensorBoardStepCallback
 
 logger = getLogger(__name__)
 

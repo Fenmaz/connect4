@@ -3,13 +3,13 @@ from logging import getLogger
 from random import random
 from time import sleep
 
-from alpha_zero.src.connect4_zero.agent.model_connect4 import Connect4Model
-from alpha_zero.src.connect4_zero.agent.player_connect4 import Connect4Player
-from alpha_zero.src.connect4_zero.config import Config
-from alpha_zero.src.connect4_zero.env.connect4_env import Connect4Env, Winner, Player
-from alpha_zero.src.connect4_zero.lib import tf_util
-from alpha_zero.src.connect4_zero.lib.data_helper import get_next_generation_model_dirs
-from alpha_zero.src.connect4_zero.lib.model_helpler import save_as_best_model, load_best_model_weight
+from connect4_zero.agent.model_connect4 import Connect4Model
+from connect4_zero.agent.player_connect4 import Connect4Player
+from connect4_zero.config import Config
+from connect4_zero.env.connect4_env import Connect4Env, Winner, Player
+from connect4_zero.lib import tf_util
+from connect4_zero.lib.data_helper import get_next_generation_model_dirs
+from connect4_zero.lib.model_helpler import save_as_best_model, load_best_model_weight
 
 logger = getLogger(__name__)
 
@@ -35,16 +35,23 @@ class EvaluateWorker:
             ng_model, model_dir = self.load_next_generation_model()
             logger.debug(f"start evaluate model {model_dir}")
             ng_is_great = self.evaluate_model(ng_model)
-            if ng_is_great:
+            if ng_is_great and not self.config.single_eval:
                 logger.debug(f"New Model become best model: {model_dir}")
                 save_as_best_model(ng_model)
                 self.best_model = ng_model
-            self.remove_model(model_dir)
+
+            if not self.config.single_eval:
+                self.remove_model(model_dir)
+            else:
+                break
 
     def evaluate_model(self, ng_model):
         results = []
         winning_rate = 0
-        for game_idx in range(self.config.eval.game_num):
+        num_game = self.config.eval.game_num
+        if self.config.single_eval:
+            num_game = self.config.eval.single_eval_game_num
+        for game_idx in range(num_game):
             # ng_win := if ng_model win -> 1, lose -> 0, draw -> None
             ng_win, white_is_best = self.play_game(self.best_model, ng_model)
             if ng_win is not None:

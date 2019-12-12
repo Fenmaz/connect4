@@ -19,8 +19,6 @@ class Config:
             import connect4_zero.configs.mini as c
         elif config_type == "normal":
             import connect4_zero.configs.normal as c
-        elif config_type == "distributed":
-            import connect4_zero.configs.distributed as c
         else:
             raise RuntimeError(f"unknown config_type: {config_type}")
         self.model = c.ModelConfig()
@@ -29,6 +27,7 @@ class Config:
         self.trainer = c.TrainerConfig()
         self.eval = c.EvaluateConfig()
         self.n_labels = 7
+        self.single_eval = False
 
 
 class Options:
@@ -43,11 +42,6 @@ class ResourceConfig:
         self.model_best_config_path = os.path.join(self.model_dir, "model_best_config.json")
         self.model_best_weight_path = os.path.join(self.model_dir, "model_best_weight.h5")
 
-        self.model_best_distributed_ftp_server = "enews2.com"
-        self.model_best_distributed_ftp_user = "ftp@enews2.com"
-        self.model_best_distributed_ftp_password = "ngmAQedM9"
-        self.model_best_distributed_ftp_remote_path = "/"
-        
         self.next_generation_model_dir = os.path.join(self.model_dir, "next_generation")
         self.next_generation_model_dirname_tmpl = "model_%s"
         self.next_generation_model_config_filename = "model_config.json"

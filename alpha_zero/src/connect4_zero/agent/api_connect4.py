@@ -1,4 +1,4 @@
-from alpha_zero.src.connect4_zero.config import Config
+from connect4_zero.config import Config
 
 
 class Connect4ModelAPI:
