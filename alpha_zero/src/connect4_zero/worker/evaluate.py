@@ -3,13 +3,13 @@ from logging import getLogger
 from random import random
 from time import sleep
 
-from connect4_zero.agent.model_connect4 import Connect4Model
-from connect4_zero.agent.player_connect4 import Connect4Player
-from connect4_zero.config import Config
-from connect4_zero.env.connect4_env import Connect4Env, Winner, Player
-from connect4_zero.lib import tf_util
-from connect4_zero.lib.data_helper import get_next_generation_model_dirs
-from connect4_zero.lib.model_helpler import save_as_best_model, load_best_model_weight
+from alpha_zero.src.connect4_zero.agent.model_connect4 import Connect4Model
+from alpha_zero.src.connect4_zero.agent.player_connect4 import Connect4Player
+from alpha_zero.src.connect4_zero.config import Config
+from alpha_zero.src.connect4_zero.env.connect4_env import Connect4Env, Winner, Player
+from alpha_zero.src.connect4_zero.lib import tf_util
+from alpha_zero.src.connect4_zero.lib.data_helper import get_next_generation_model_dirs
+from alpha_zero.src.connect4_zero.lib.model_helpler import save_as_best_model, load_best_model_weight
 
 logger = getLogger(__name__)
 

@@ -3,12 +3,12 @@ from datetime import datetime
 from logging import getLogger
 from time import time
 
-from connect4_zero.agent.player_connect4 import Connect4Player
-from connect4_zero.config import Config
-from connect4_zero.env.connect4_env import Connect4Env, Winner, Player
-from connect4_zero.lib import tf_util
-from connect4_zero.lib.data_helper import get_game_data_filenames, write_game_data_to_file
-from connect4_zero.lib.model_helpler import load_best_model_weight, save_as_best_model, \
+from alpha_zero.src.connect4_zero.agent.player_connect4 import Connect4Player
+from alpha_zero.src.connect4_zero.config import Config
+from alpha_zero.src.connect4_zero.env.connect4_env import Connect4Env, Winner, Player
+from alpha_zero.src.connect4_zero.lib import tf_util
+from alpha_zero.src.connect4_zero.lib.data_helper import get_game_data_filenames, write_game_data_to_file
+from alpha_zero.src.connect4_zero.lib.model_helpler import load_best_model_weight, save_as_best_model, \
     reload_best_model_weight_if_changed
 
 logger = getLogger(__name__)

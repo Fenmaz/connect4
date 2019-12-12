@@ -14,7 +14,7 @@ from keras.layers.normalization import BatchNormalization
 from keras.losses import mean_squared_error
 from keras.regularizers import l2
 
-from connect4_zero.config import Config
+from alpha_zero.src.connect4_zero.config import Config
 
 logger = getLogger(__name__)
 
