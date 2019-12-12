@@ -1,4 +1,4 @@
-from data_util import fetch_train_val
+from classification.src.data_util import fetch_train_val
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix
 import numpy as np

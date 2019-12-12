@@ -1,5 +1,17 @@
 # Data files
-data/
+classification/data/
+alpha_zero/data/play_data/
+alpha_zero/data/next_generation/
+*.csv
 
 # Python cache files
 __pycache__/
+*.pyc
+
+# Logs
+logs/
+
+# System files
+.idea
+.DS_Store
+.env

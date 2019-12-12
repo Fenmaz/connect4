@@ -14,7 +14,7 @@ Similar to what the author in the above link did, I place 1 for player 1, 2 for 
 Then using the scoring method described in the above link, I try to run the negamax algorithm.
 
 '''
-import data_util
+from classification.src import data_util
 
 '''================== I/O Methods ====================='''
 '''
